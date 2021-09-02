@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import AppIndex from '../components/home/AppIndex'
 import Login from '../components/Login'
 import Home from '../components/Home'
+import LibraryIndex from '../components/library/LibraryIndex'
 
 Vue.use(Router)
 
@@ -33,7 +34,16 @@ export default new Router({
           meta: {
             requireAuth: true
           }
+        },
+        {
+          path: '/library',
+          name: 'Library',
+          component: LibraryIndex,
+          meta: {
+            requireAuth: true
+          }
         }
+
       ]
     }
 

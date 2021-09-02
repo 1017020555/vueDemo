@@ -10,6 +10,13 @@
         {{item.navItem}}
     </el-menu-item>
 
+
+
+    <a href="#nowhere" style="color: #222;float: right;padding: 20px;text-decoration: none;">更多功能</a>
+    <i class="el-icon-menu" style="float:right;font-size: 45px;color: #222;padding-top: 8px"></i>
+
+    <span style="color: #222;float: right;padding: 20px;text-decoration: none;position: absolute;">图书馆</span>
+
   </el-menu>
 </template>
 
