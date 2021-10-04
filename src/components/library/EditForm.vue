@@ -81,7 +81,10 @@
           press: '',
           cover: '',
           abs: '',
-          category: {}
+          category: {
+            id: '',
+            name: ''
+          }
         }
       },
       onSubmit () {

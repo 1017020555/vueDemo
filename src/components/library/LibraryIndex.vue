@@ -24,7 +24,7 @@
       selectByCategory () {
         var _this = this
         var cid = this.$refs.sideMenu.cid
-        this.$axios.get('categories/' + cid + '/books').then(result => {
+        this.$axios.get('/categories/' + cid + '/books').then(result => {
           if (result && result.status == 200) {
             _this.$refs.bookArea.books = result.data
           }

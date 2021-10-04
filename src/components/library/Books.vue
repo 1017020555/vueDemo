@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-row style="height: 840px;">
+    <el-row style="height: 600px;">
 
       <search-bar @onSearch="searchResult" ref="searchBar"></search-bar>
 
@@ -29,7 +29,7 @@
 
       </el-tooltip>
 
-      <edit-form @submit="loadBooks()" ref="edit"></edit-form>
+      <edit-form @onSubmit="loadBooks()" ref="edit"></edit-form>
 
     </el-row>
     <el-row>
@@ -88,7 +88,7 @@
       },
       handleCurrentChange: function (currentPage) {
         this.currentPage = currentPage
-        console.log(currentPage + ': currentPage')
+
       },
       searchResult () {
         var _this = this
