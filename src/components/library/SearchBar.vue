@@ -19,7 +19,8 @@
     name: 'SearchBar',
     data () {
       return {
-        keywords: ''
+        keywords: '',
+        books:[]
       }
     },
     methods: {

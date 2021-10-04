@@ -14,7 +14,7 @@
         </p>
         <p slot="content" style="width: 300px" class="abstract">{{item.abs}}</p>
 
-        <el-card style="width: 135px;margin-bottom: 20px;height: 233px;float: left;margin-right: 15px" class="book"
+        <el-card style="width: 140px;margin-bottom: 20px;height: 233px;float: left;margin-right: 15px" class="book"
                  bodyStyle="padding:10px" shadow="hover">
           <div class="cover" v-on:click="editBooks(item)">
             <img v-bind:src="item.cover" alt="封面">
@@ -23,8 +23,11 @@
             <div class="title">
               <a href="">{{item.title}}</a>
             </div>
+            <i style="float: right;" class="el-icon-delete" @click="deleteBook(item.id)"></i>
           </div>
-          <div class="author">{{item.author}}</div>
+          <div class="author">
+            {{item.author}}
+          </div>
         </el-card>
 
       </el-tooltip>
@@ -67,6 +70,7 @@
         _this.$axios.get('/books').then(response => {
           if (response && response.status == 200) {
             _this.books = response.data
+            _this.currentPage = 1
           }
         })
       },
@@ -92,11 +96,32 @@
       },
       searchResult () {
         var _this = this
-        this.$axios.get('/search?keywords='+this.$refs.searchBar.keywords, {}).then(resp => {
-          if (resp && resp.status==200){
-            _this.books=resp.data
+
+        this.$axios.get('/search?keywords=' + this.$refs.searchBar.keywords, {}).then(resp => {
+          if (resp && resp.status == 200) {
+            _this.books = resp.data
+            _this.currentPage = 1
           }
         })
+      },
+      deleteBook (id) {
+        this.$confirm('此操作将永久删除该书籍, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.$axios.post('/delete',{id:id}).then(result => {
+            if (result && result.status == 200) {
+              this.loadBooks()
+            }
+          })
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          })
+        })
+
       }
 
     }

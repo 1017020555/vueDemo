@@ -1,7 +1,7 @@
 <template>
   <el-container>
 
-    <el-aside style="width: 260px;margin-top: 20px">
+    <el-aside style="width: 220px;margin-top: 20px">
       <switch></switch>
       <side-menu @indexSelect="selectByCategory" ref="sideMenu"></side-menu>
     </el-aside>
@@ -27,6 +27,7 @@
         this.$axios.get('/categories/' + cid + '/books').then(result => {
           if (result && result.status == 200) {
             _this.$refs.bookArea.books = result.data
+            _this.$refs.bookArea.currentPage = 1
           }
         })
       }
