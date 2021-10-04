@@ -1,9 +1,9 @@
 <template>
 
       <el-menu
-        default-active="1"
+        default-active="0"
         class="categories"
-
+        @select="handleSelect"
         >
         <el-menu-item index="0">
           <i class="el-icon-menu"></i>
@@ -40,7 +40,18 @@
 
 <script>
   export default {
-    name: 'SideMenu'
+    name: 'SideMenu',
+    data(){
+      return{
+        cid:''
+      }
+    },
+    methods:{
+      handleSelect(key, keyPath) {
+        this.cid=key
+        this.$emit('indexSelect')
+      }
+    }
   }
 </script>
 
